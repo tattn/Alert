@@ -29,6 +29,15 @@ class RootVC: UIViewController {
             .addAction("Cancel", style: .cancel) { _ in
                 print("cancel")
             }
+            .addTextField(configuration: { textField in
+                textField.placeholder = "E-mail"
+            }, textDidChanged: { alert, textField in
+                print(textField.text)
+            })
+            .addTextField(configuration: { textField in
+                textField.placeholder = "Password"
+                textField.isSecureTextEntry = true
+            })
             .present()
     }
 }

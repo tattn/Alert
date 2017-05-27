@@ -55,22 +55,6 @@ public extension AlertProtocol {
         alertController.addAction(action)
         return self
     }
-
-    @discardableResult
-    public func addTextfield(configurationHandler: ((UITextField) -> Void)?,
-                             textDidChanged: ((Self) -> Void)? = nil) -> Self {
-        alertController.addTextField { textField in
-            if let textDidChanged = textDidChanged {
-                NotificationCenter.default
-                    .addObserver(forName: .UITextFieldTextDidChange,
-                                 object: textField,
-                                 queue: .main) { _ in
-                                    textDidChanged(self)
-                }
-            }
-        }
-        return self
-    }
 }
 
 extension AlertProtocol {

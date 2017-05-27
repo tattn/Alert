@@ -29,4 +29,21 @@ public final class Alert: AlertProtocol {
                             animated: animated,
                             completion: completion)
     }
+
+    @discardableResult
+    public func addTextField(configuration: ((UITextField) -> Void)?,
+                             textDidChanged: ((Alert, UITextField) -> Void)? = nil) -> Self {
+        alertController.addTextField { textField in
+            if let textDidChanged = textDidChanged {
+                NotificationCenter.default
+                    .addObserver(forName: .UITextFieldTextDidChange,
+                                 object: textField,
+                                 queue: .main) { _ in
+                                    textDidChanged(self, textField)
+                }
+            }
+            configuration?(textField)
+        }
+        return self
+    }
 }
