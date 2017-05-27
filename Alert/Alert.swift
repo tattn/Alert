@@ -8,8 +8,10 @@
 
 import Foundation
 
-public struct Alert: AlertProtocol {
+public final class Alert: AlertProtocol {
     public internal(set) var alertController: UIAlertController
+
+    private init() { fatalError() }
 
     public init(title: String? = nil,
                 message: String? = nil) {
