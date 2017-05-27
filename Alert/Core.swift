@@ -61,7 +61,10 @@ extension AlertProtocol {
     func viewControllerToPresent(_ viewController: UIViewController?) -> UIViewController? {
         if let vc = viewController {
             return vc
-        } else if let vc = UIApplication.shared.keyWindow?.rootViewController {
+        } else if var vc = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = vc.presentedViewController {
+                vc = presentedViewController
+            }
             return vc
         } else {
             return nil
