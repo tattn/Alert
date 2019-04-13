@@ -22,7 +22,7 @@ public protocol AlertProtocol {
 
     @discardableResult
     func addAction(_ title: String,
-                   style: UIAlertActionStyle,
+                   style: UIAlertAction.Style,
                    handler: ((Self, UIAlertAction) -> Void)?) -> Self
 
     func present(on parentViewController: UIViewController?,
@@ -47,7 +47,7 @@ public extension AlertProtocol {
 
     @discardableResult
     public func addAction(_ title: String,
-                          style: UIAlertActionStyle = .default,
+                          style: UIAlertAction.Style = .default,
                           handler: ((Self, UIAlertAction) -> Void)? = nil) -> Self {
         let action = UIAlertAction(title: title, style: style) { action in
             handler?(self, action)

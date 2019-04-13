@@ -36,7 +36,7 @@ public final class Alert: AlertProtocol {
         alertController.addTextField { textField in
             if let textDidChanged = textDidChanged {
                 NotificationCenter.default
-                    .addObserver(forName: .UITextFieldTextDidChange,
+                    .addObserver(forName: UITextField.textDidChangeNotification,
                                  object: textField,
                                  queue: .main) { _ in
                                     textDidChanged(self, textField)
