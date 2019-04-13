@@ -31,22 +31,22 @@ public protocol AlertProtocol {
 }
 
 public extension AlertProtocol {
-    public var title: String? {
+    var title: String? {
         get { return alertController.title }
         set { alertController.title = newValue }
     }
 
-    public var message: String? {
+    var message: String? {
         get { return alertController.message }
         set { alertController.message = newValue }
     }
 
-    public var actions: [UIAlertAction] {
+    var actions: [UIAlertAction] {
         return alertController.actions
     }
 
     @discardableResult
-    public func addAction(_ title: String,
+    func addAction(_ title: String,
                           style: UIAlertAction.Style = .default,
                           handler: ((Self, UIAlertAction) -> Void)? = nil) -> Self {
         let action = UIAlertAction(title: title, style: style) { action in
